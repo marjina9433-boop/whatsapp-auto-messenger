@@ -2,60 +2,77 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>WhatsApp Thank You Messenger</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101b2d">
+<meta name="description" content="House of DD - WhatsApp Thank You Message">
+<title>House of DD | Thank You Messenger</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#0b1220;color:#fff;font-family:Arial,sans-serif}
-header{text-align:center;background:#142338;padding:28px 12px}
-h1{color:#4ade80;font-size:25px}
-main{max-width:540px;margin:30px auto;padding:15px}
-.card{background:#192b40;border-radius:18px;padding:24px}
-label{display:block;margin:18px 0 8px;font-weight:bold}
-input,textarea{width:100%;padding:14px;background:#0b1220;color:white;border:1px solid #506078;border-radius:10px;font-size:16px}
-textarea{height:160px;resize:vertical}
-button{width:100%;background:#22c55e;color:#052e16;padding:16px;border:0;border-radius:10px;font-size:17px;font-weight:bold;margin-top:20px;cursor:pointer}
-p{color:#b5c3d4;line-height:1.6}
-#error{color:#fca5a5}
-footer{text-align:center;color:#94a3b8;padding:20px}
+body{margin:0;font-family:Arial,sans-serif;background:#101b2d;color:#fff;min-height:100vh}
+header{text-align:center;padding:38px 16px;background:linear-gradient(135deg,#182c45,#101b2d);border-bottom:2px solid #d5ac64}
+.logo{font-size:38px;margin-bottom:10px}
+h1{margin:0;color:#f0c77a;font-size:30px;letter-spacing:1px}
+.subtitle{color:#cbd5e1;margin-top:12px;font-size:14px}
+main{max-width:520px;margin:32px auto;padding:0 16px}
+.card{background:#1b2b40;border:1px solid #34475d;border-radius:20px;padding:26px;box-shadow:0 12px 32px #0004}
+h2{margin:0 0 12px;color:#f0c77a;font-size:23px}
+.intro{font-size:14px;color:#cbd5e1;line-height:1.6;margin-bottom:24px}
+label{display:block;margin:20px 0 9px;font-size:14px;font-weight:bold}
+input,textarea{width:100%;background:#0c1728;color:#fff;border:1px solid #52627a;border-radius:11px;padding:14px;font:15px Arial,sans-serif;outline:none}
+input:focus,textarea:focus{border-color:#f0c77a}
+textarea{min-height:190px;resize:vertical;line-height:1.7}
+.hint{font-size:12px;color:#aebed1;margin:8px 0}
+button{width:100%;background:#25d366;color:#092915;border:0;border-radius:12px;padding:16px;font-size:17px;font-weight:bold;margin-top:22px;cursor:pointer}
+button:active{transform:scale(.99)}
+#error{color:#ff8e8e;font-size:13px;margin-top:12px;min-height:18px}
+.note{color:#b8c8d8;font-size:12px;line-height:1.6;text-align:center;margin-top:16px}
+footer{text-align:center;color:#a9b7c9;padding:30px 12px;font-size:13px}
+footer strong{color:#f0c77a}
 </style>
 </head>
 <body>
 <header>
-<h1>💬 WhatsApp Messenger</h1>
-<p>Professional Thank You Message System</p>
+<div class="logo">💛</div>
+<h1>HOUSE OF DD</h1>
+<p class="subtitle">Premium Customer Thank You Messenger</p>
 </header>
 <main>
-<div class="card">
-<h2>Send Thank You Message</h2>
+<section class="card">
+<h2>Send a Thank You 💌</h2>
+<p class="intro">Show your appreciation with a personalized message from House of DD.</p>
 <label for="phone">Customer WhatsApp Number</label>
-<input id="phone" type="tel" placeholder="919876543210">
-<p>Enter number with country code (91 for India).</p>
-<label for="message">Thank You Message</label>
+<input id="phone" type="tel" inputmode="tel" placeholder="919876543210" autocomplete="tel">
+<p class="hint">Enter the country code and number, without +. Example: 919876543210</p>
+<label for="message">Your Thank You Message</label>
 <textarea id="message">Hello! 👋
 
-Thank you for choosing our services.
-We appreciate your trust and support.
+Thank you for choosing House of DD! 💛
 
-Have a wonderful day! ❤️</textarea>
+We truly appreciate your trust and support.
+
+Your happiness means a lot to us. We look forward to serving you again!
+
+Warm regards,
+Team House of DD ✨</textarea>
 <p id="error" role="alert"></p>
-<button onclick="sendMessage()">💬 Open WhatsApp</button>
-<p>WhatsApp will open with the prepared message. Press Send to deliver it.</p>
-</div>
+<button type="button" onclick="sendMessage()">💬 Open WhatsApp</button>
+<p class="note">WhatsApp will open with your message ready. Press Send in WhatsApp to deliver it.</p>
+</section>
 </main>
-<footer>WhatsApp Click-to-Chat Website</footer>
+<footer>© <span id="year"></span> <strong>HOUSE OF DD</strong> · All Rights Reserved</footer>
 <script>
+document.getElementById("year").textContent=new Date().getFullYear();
 function sendMessage(){
 const phone=document.getElementById("phone").value.replace(/\D/g,"");
 const message=document.getElementById("message").value.trim();
 const error=document.getElementById("error");
 error.textContent="";
 if(!/^[1-9]\d{7,14}$/.test(phone)){
-error.textContent="Enter a valid number with country code.";
+error.textContent="Please enter a valid WhatsApp number with country code.";
 return;
 }
 if(!message){
-error.textContent="Please enter a message.";
+error.textContent="Please enter a thank you message.";
 return;
 }
 window.location.href="https://wa.me/"+phone+"?text="+encodeURIComponent(message);
