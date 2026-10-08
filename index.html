@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WhatsApp Thank You Messenger</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1220;color:#fff;font-family:Arial,sans-serif}
+header{text-align:center;background:#142338;padding:28px 12px}
+h1{color:#4ade80;font-size:25px}
+main{max-width:540px;margin:30px auto;padding:15px}
+.card{background:#192b40;border-radius:18px;padding:24px}
+label{display:block;margin:18px 0 8px;font-weight:bold}
+input,textarea{width:100%;padding:14px;background:#0b1220;color:white;border:1px solid #506078;border-radius:10px;font-size:16px}
+textarea{height:160px;resize:vertical}
+button{width:100%;background:#22c55e;color:#052e16;padding:16px;border:0;border-radius:10px;font-size:17px;font-weight:bold;margin-top:20px;cursor:pointer}
+p{color:#b5c3d4;line-height:1.6}
+#error{color:#fca5a5}
+footer{text-align:center;color:#94a3b8;padding:20px}
+</style>
+</head>
+<body>
+<header>
+<h1>💬 WhatsApp Messenger</h1>
+<p>Professional Thank You Message System</p>
+</header>
+<main>
+<div class="card">
+<h2>Send Thank You Message</h2>
+<label for="phone">Customer WhatsApp Number</label>
+<input id="phone" type="tel" placeholder="919876543210">
+<p>Enter number with country code (91 for India).</p>
+<label for="message">Thank You Message</label>
+<textarea id="message">Hello! 👋
 
+Thank you for choosing our services.
+We appreciate your trust and support.
+
+Have a wonderful day! ❤️</textarea>
+<p id="error" role="alert"></p>
+<button onclick="sendMessage()">💬 Open WhatsApp</button>
+<p>WhatsApp will open with the prepared message. Press Send to deliver it.</p>
+</div>
+</main>
+<footer>WhatsApp Click-to-Chat Website</footer>
+<script>
+function sendMessage(){
+const phone=document.getElementById("phone").value.replace(/\D/g,"");
+const message=document.getElementById("message").value.trim();
+const error=document.getElementById("error");
+error.textContent="";
+if(!/^[1-9]\d{7,14}$/.test(phone)){
+error.textContent="Enter a valid number with country code.";
+return;
+}
+if(!message){
+error.textContent="Please enter a message.";
+return;
+}
+window.location.href="https://wa.me/"+phone+"?text="+encodeURIComponent(message);
+}
+</script>
+</body>
+</html>
